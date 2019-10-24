@@ -1,0 +1,102 @@
+<html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<body>
+
+
+
+<script>
+
+    JSONTestGetData = function() {
+
+
+        $.ajax({
+            url: "http://localhost:4567/get",
+            type: "POST",
+            success: function (result) {
+                window.alert(result);
+                $("div#content").replaceWith(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    };
+
+</script>
+
+
+<script>
+
+    JSONTestSortData = function() {
+
+        $.ajax({
+            url: "http://localhost:4567/sort",
+            type: "POST",
+            success: function (result) {
+                window.alert(result);
+                $("div#content").replaceWith(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    };
+
+</script>
+
+<script>
+
+    JSONTestSearchData = function() {
+
+        $.ajax({
+            url: "http://localhost:4567/search",
+            type: "POST",
+            success: function (result) {
+                window.alert(result);
+
+                //   So html() replaces the contents of the element, while replaceWith() replaces the actual element.
+
+                //   <div id="mydiv">Hello World</div>
+                //   $('#mydiv').html('Aloha World');
+                //   <div id="mydiv">Aloha World</div>
+
+                //    <div id="mydiv">Hello World</div>
+                //    $('#mydiv').replaceWith('Aloha World');
+                //    Aloha World
+
+                $("div#content").replaceWith(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    };
+
+</script>
+
+<div id="header">
+    ...some content that's to be updated Header...
+    <div id="testname">
+        #include("template\header.vm")
+    </div>
+
+</div>
+
+
+<p id="demo"></p>
+
+
+<div id="content"></div>
+
+
+<div id="footer">
+    ...some content that's to be updated Footer...
+
+    #include("template\footer.vm")
+
+
+</body>
+</html>
